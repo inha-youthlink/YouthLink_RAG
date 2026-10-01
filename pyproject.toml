@@ -1,8 +1,11 @@
 [project]
 name = "youthlink-rag"
 version = "0.1.0"
+description = "YouthLink RAG 기반 청년 지원 챗봇 및 신청 가이드 시스템"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.142.2",
+    "pydantic-settings>=2.15.0",
     "uvicorn[standard]>=0.54.0",
 ]
