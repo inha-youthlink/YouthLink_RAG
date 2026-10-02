@@ -10,6 +10,7 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         extra="ignore",
+        # .env.example을 그대로 복사해도 빈 값은 기본값을 사용함
         env_ignore_empty=True,
     )
 

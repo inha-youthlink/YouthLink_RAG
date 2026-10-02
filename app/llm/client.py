@@ -40,6 +40,7 @@ class LLMClient:
             input=messages,
         )
         usage = response.usage
+        # Responses API의 input/output 토큰을 trace 형식(prompt/completion)에 맞춤
         return ChatResult(
             text=response.output_text,
             prompt_tokens=usage.input_tokens if usage else 0,

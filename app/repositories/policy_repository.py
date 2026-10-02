@@ -24,6 +24,7 @@ class PolicyRepository:
     def __init__(self, session_factory: async_sessionmaker[AsyncSession]) -> None:
         self._session_factory = session_factory
 
+    # ANY는 결과 순서를 보장하지 않아 dict로 반환함. 호출 측에서 묶기 결과 순서대로 꺼내 씀
     async def get_by_ids(self, policy_nos: list[str]) -> dict[str, PolicyRecord]:
         if not policy_nos:
             return {}

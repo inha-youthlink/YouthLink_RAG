@@ -8,6 +8,7 @@ from app.pipeline.retrieval.base import Retriever
 from app.repositories.policy_repository import PolicyRepository
 
 
+# VectorRepository는 넣지 않음. 파이프라인은 검색기를 통해서만 검색함
 @dataclass(frozen=True)
 class PipelineDeps:
     settings: Settings

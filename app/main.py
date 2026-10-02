@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     )
     app.state.session_factory = async_sessionmaker(app.state.engine, expire_on_commit=False)
 
-    # 저장소와 검색기 생성
+    # 저장소와 검색기 생성: 잘못된 RETRIEVER 값이 첫 요청이 아니라 서버 시작 시 실패하도록 여기서 생성함
     app.state.policy_repository = PolicyRepository(app.state.session_factory)
     app.state.retriever = create_retriever(
         settings.retriever,

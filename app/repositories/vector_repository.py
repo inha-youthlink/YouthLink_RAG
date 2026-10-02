@@ -4,8 +4,11 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.schemas.pipeline import Chunk
 
+# ETL policy_chunk.embedding VECTOR(1536)과 같아야 함
 EMBEDDING_DIM = 1536
 
+# embedding IS NOT NULL: HNSW가 이 조건의 조건부 인덱스라 빠지면 인덱스를 쓰지 못함
+# ORDER BY: score로 정렬하면 인덱스를 쓰지 못해 거리로 정렬함
 _SEARCH_SQL = """
 SELECT chunk_id, policy_no, chunk_index, chunk_type, content,
        1 - (embedding <=> :query_vec) AS score
@@ -29,6 +32,7 @@ class VectorRepository:
         k: int,
         policy_ids: list[str] | None = None,
     ) -> list[Chunk]:
+        # 필터 결과가 0건이면 조회 없이 빈 결과를 반환함
         if policy_ids is not None and not policy_ids:
             return []
 
