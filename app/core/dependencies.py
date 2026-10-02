@@ -5,6 +5,7 @@ from fastapi import Depends, Request
 from app.core.config import Settings, get_settings
 from app.llm.client import LLMClient
 from app.pipeline.retrieval.base import Retriever
+from app.repositories.common_code_repository import CommonCodeRepository
 from app.repositories.policy_repository import PolicyRepository
 
 
@@ -15,6 +16,7 @@ class PipelineDeps:
     llm: LLMClient
     retriever: Retriever
     policy_repository: PolicyRepository
+    common_code_repository: CommonCodeRepository
 
 
 def get_llm(request: Request) -> LLMClient:
@@ -29,15 +31,21 @@ def get_policy_repository(request: Request) -> PolicyRepository:
     return request.app.state.policy_repository
 
 
+def get_common_code_repository(request: Request) -> CommonCodeRepository:
+    return request.app.state.common_code_repository
+
+
 def get_pipeline_deps(
     settings: Settings = Depends(get_settings),
     llm: LLMClient = Depends(get_llm),
     retriever: Retriever = Depends(get_retriever),
     policy_repository: PolicyRepository = Depends(get_policy_repository),
+    common_code_repository: CommonCodeRepository = Depends(get_common_code_repository),
 ) -> PipelineDeps:
     return PipelineDeps(
         settings=settings,
         llm=llm,
         retriever=retriever,
         policy_repository=policy_repository,
+        common_code_repository=common_code_repository,
     )
