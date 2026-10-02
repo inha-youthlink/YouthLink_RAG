@@ -144,6 +144,7 @@ YouthLink_RAG/
 │  ├─ repositories/
 │  │  ├─ vector_repository.py    # policy_chunk 벡터 검색 (읽기)
 │  │  ├─ policy_repository.py    # policy 조회 (읽기)
+│  │  ├─ common_code_repository.py  # common_code 코드 → 이름 조회 (읽기)
 │  │  └─ chat_repository.py      [+ 6주차] chat_* 테이블 (Phase 2에서 제거)
 │  └─ prompts/
 │     ├─ generate_v1.md
@@ -202,6 +203,7 @@ YouthLink_RAG/
   - `env_ignore_empty=True`: `.env`의 빈 값은 기본값 사용. `.env.example`은 필수/선택 섹션으로 나누고 선택 값에 기본값 주석
   - `.env` 변경 후에는 서버 재시작 필요 (`--reload`는 `.py` 변경만 감지)
 - lifespan에서 OpenAI 클라이언트, DB 엔진, 저장소, 검색기를 한 번 생성해 재사용. 잘못된 `RETRIEVER` 값은 서버 시작 시 실패
+- 서버 시작 시에는 클라이언트·저장소 객체만 만들고 DB 조회는 하지 않음 (DB 상태와 무관하게 서버 기동). 공통 코드 같은 참조 데이터도 요청 시 조회
 - 파이프라인 의존성(`PipelineDeps`: 설정, LLM, 검색기, 저장소)은 `Depends`로 주입 → 테스트에서 `dependency_overrides`로 교체
 - 모든 엔드포인트와 LLM 호출은 async, 병렬 호출은 `asyncio.gather`
 - OpenAI 호출에 타임아웃과 재시도
@@ -442,7 +444,7 @@ message_policy_ref  message_id(PK,FK), policy_no(PK,FK), relevance_score
 - 입력: 재작성된 질문, 검색 근거(정책 번호, 청크 타입 포함), 프로필, 최근 3~5턴, **오늘 날짜**
 - 근거는 청크 내용 + 정책 정보(정책명, 신청 기간, URL). ETL 청크에는 신청 기간과 링크가 없어 `policy` 테이블에서 보완
 - 신청 상태(신청 가능/마감/상시/정보 없음)는 코드에서 계산해 전달 (LLM의 날짜 비교 오류 방지), 마감 정책은 답변에 명시
-- 프로필 코드 값은 `common_code`로 이름 변환 후 전달. 지역은 코드 사전이 없어 제외
+- 프로필 코드 값은 `common_code`에서 요청마다 필요한 코드만 조회해 이름으로 변환 후 전달. 지역은 코드 사전이 없어 제외
 - 사실 정보는 **검색 근거에서만**. 이전 답변을 사실 근거로 재사용 금지
 - 근거가 없으면 모른다고 답함
 - 출처(정책명, `application_url`/`reference_url_*`) 표시
