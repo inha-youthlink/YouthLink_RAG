@@ -64,7 +64,7 @@ RAG 평가 서버와의 계약이다. 이후에는 기본값 있는 선택 필�
   "question": "월세 지원받을 수 있는 정책 있어?",
   "profile": {
     "age": 24,
-    "region_code": "...",
+    "region_code": "11680",
     "marriage_status_code": "...",
     "annual_income": 20000000,
     "major_code": null,
@@ -75,6 +75,7 @@ RAG 평가 서버와의 계약이다. 이후에는 기본값 있는 선택 필�
 }
 ```
 - `question`은 1글자 이상, `profile`은 생략 가능 (빈 프로필)
+- `region_code`는 법정 시군구 코드 5자리 (온통청년 `zipCd`와 같은 체계, 예: `11680` 서울특별시 강남구)
 - `age`, `annual_income`은 0 이상. 검증 실패 시 422
 
 ### 응답
@@ -146,7 +147,7 @@ RAG 평가 서버와의 계약이다. 이후에는 기본값 있는 선택 필�
 4. `policy_region`에 행이 없을 때의 의미 (전국 / 정보 없음)
 5. `chat_*` 테이블 생성·변경 주체 (현재 ETL `schema.sql`에 포함)
 6. 신청 기간 구분 코드(`aplyPrdSeCd`)가 `application_period_type_code`에 들어가는지, 상시 코드와 날짜가 어긋나는 경우가 있는지
-7. 지역 코드 사전 계획 (프로필의 지역을 이름으로 바꾸거나 필터링에 쓰려면 필요)
+7. 지역 코드 사전 적재 (법정 시군구 코드 → 이름, VWORLD 법정동 API 기준, 시도 코드 변경 이력 포함)
 
 ---
 
