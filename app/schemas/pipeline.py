@@ -26,7 +26,7 @@ class Chunk(BaseModel):
     chunk_id: UUID
     policy_no: str
     chunk_index: int
-    chunk_type: str | None = None
+    chunk_type: str
     content: str
     score: float
 
