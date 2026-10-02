@@ -5,7 +5,9 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 _GET_BY_IDS_SQL = text("""
-SELECT policy_no, policy_name, application_start_date, application_end_date, application_url
+SELECT policy_no, policy_name,
+       application_period_type_code, application_start_date, application_end_date,
+       application_url, application_method, submission_documents, supervising_org_name
 FROM policy
 WHERE policy_no = ANY(:policy_nos)
 """)
@@ -15,9 +17,13 @@ WHERE policy_no = ANY(:policy_nos)
 class PolicyRecord:
     policy_no: str
     policy_name: str
+    application_period_type_code: str | None
     application_start_date: date | None
     application_end_date: date | None
     application_url: str | None
+    application_method: str | None
+    submission_documents: str | None
+    supervising_org_name: str | None
 
 
 class PolicyRepository:

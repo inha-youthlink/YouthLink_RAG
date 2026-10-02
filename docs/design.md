@@ -28,6 +28,8 @@
 - **거리 기준**: 코사인 → pgvector `<=>` 연산자, 점수는 `1 - 거리`
 - **벡터 인덱스**: HNSW (`vector_cosine_ops`), `WHERE embedding IS NOT NULL` 조건부 인덱스 → 검색 쿼리에도 `embedding IS NOT NULL` 조건 필요
 
+- **지역 코드**: `policy_region.region_code`는 온통청년 API `zipCd`의 법정 시군구 코드(5자리). 앞 2자리가 시도 (예: `11000` 서울특별시, `11680` 서울특별시 강남구)
+
 **방향** (ETL 담당자 공유)
 - **청크 단위**: 1정책 1청크. 길면 `[세부 내용]`을 문장 단위로 분할
 - **임베딩 텍스트 형식**: `[정책] ... [나이] ... [학력] ... [소득 조건] ... [세부 내용] ...`
@@ -36,11 +38,12 @@
 - **`chunk_type` 값의 의미**: 스키마상 필수 값. 분할 여부 구분인지 다른 구분인지
 - **분할된 청크의 헤더 반복 여부**: 두 번째 청크부터 `[정책] 정책명`이 없으면 검색과 답변 출처에 불리
 - **갱신 방식**: 공고 수정 시 기존 청크 삭제 후 재삽입 여부
+- **지역 코드 사전**: 코드 → 이름 사전이 DB에 없음. ETL이 VWORLD 법정동 API(시도·시군구 조회)로 수집해 적재 요청 (`common_code`에 `zipCd` 그룹 또는 별도 테이블). 시도 코드 변경 이력(강원 42→51, 전북 45→52)도 함께 처리 필요
 
 ### 1-2. 자격 조건 저장 규칙
 - 나이: `min_age`, `max_age`, `age_limit_yn`
 - 소득: `income_condition_code`, `min_income`, `max_income`, `income_etc`
-- 지역: `policy_region`
+- 지역: `policy_region` (법정 시군구 코드)
 - 혼인, 전공, 직업, 학력, 특화 대상: `marriage_status_code`, `policy_eligibility_code`
 - 구조화 어려운 조건: `additional_qualification`, `participation_exclusion`
 - **"제한 없음"과 "정보 없음"의 표현 규칙**
@@ -144,6 +147,7 @@ YouthLink_RAG/
 │  ├─ repositories/
 │  │  ├─ vector_repository.py    # policy_chunk 벡터 검색 (읽기)
 │  │  ├─ policy_repository.py    # policy 조회 (읽기)
+│  │  ├─ common_code_repository.py  # common_code 코드 → 이름 조회 (읽기)
 │  │  └─ chat_repository.py      [+ 6주차] chat_* 테이블 (Phase 2에서 제거)
 │  └─ prompts/
 │     ├─ generate_v1.md
@@ -202,6 +206,7 @@ YouthLink_RAG/
   - `env_ignore_empty=True`: `.env`의 빈 값은 기본값 사용. `.env.example`은 필수/선택 섹션으로 나누고 선택 값에 기본값 주석
   - `.env` 변경 후에는 서버 재시작 필요 (`--reload`는 `.py` 변경만 감지)
 - lifespan에서 OpenAI 클라이언트, DB 엔진, 저장소, 검색기를 한 번 생성해 재사용. 잘못된 `RETRIEVER` 값은 서버 시작 시 실패
+- 서버 시작 시에는 클라이언트·저장소 객체만 만들고 DB 조회는 하지 않음 (DB 상태와 무관하게 서버 기동). 공통 코드 같은 참조 데이터도 요청 시 조회
 - 파이프라인 의존성(`PipelineDeps`: 설정, LLM, 검색기, 저장소)은 `Depends`로 주입 → 테스트에서 `dependency_overrides`로 교체
 - 모든 엔드포인트와 LLM 호출은 async, 병렬 호출은 `asyncio.gather`
 - OpenAI 호출에 타임아웃과 재시도
@@ -405,7 +410,10 @@ message_policy_ref  message_id(PK,FK), policy_no(PK,FK), relevance_score
 **결정 전 확인**
 - 실제 ETL 데이터로 대표 프로필 몇 개(예: 24세·서울·미취업·대학 재학)의 후보 수를 측정해 완화 기준을 정한다
 - 1-2의 미정 규칙(`policy_region` 빈 행 의미, 복수 조건 AND/OR)이 정해져야 판정 기준을 확정할 수 있음
-- 프로필 지역 코드와 정책 지역 코드(`zipCd`)의 단위가 같은지, 상하위 지역 처리가 필요한지
+- 지역 매칭: 프로필과 정책 모두 법정 시군구 코드를 쓰고, 상하위 관계는 코드 앞 2자리로 판단
+  - 정책이 시도 전체(`11000`)면 그 시도의 시군구 사용자는 충족
+  - 정책이 다른 시군구면 불충족
+  - 사용자가 시도만 입력했고 정책이 시군구 단위면 판단 불가
 
 ### 10-3. Advanced 기법 (질문 유형별 선택 적용)
 
@@ -441,8 +449,11 @@ message_policy_ref  message_id(PK,FK), policy_no(PK,FK), relevance_score
 
 - 입력: 재작성된 질문, 검색 근거(정책 번호, 청크 타입 포함), 프로필, 최근 3~5턴, **오늘 날짜**
 - 근거는 청크 내용 + 정책 정보(정책명, 신청 기간, URL). ETL 청크에는 신청 기간과 링크가 없어 `policy` 테이블에서 보완
-- 신청 상태(신청 가능/마감/상시/정보 없음)는 코드에서 계산해 전달 (LLM의 날짜 비교 오류 방지), 마감 정책은 답변에 명시
-- 프로필 코드 값은 `common_code`로 이름 변환 후 전달. 지역은 코드 사전이 없어 제외
+- 신청 상태(상시 모집/신청 가능/신청 예정/마감/정보 없음)는 코드에서 계산해 전달 (LLM의 날짜 비교 오류 방지), 마감 정책은 답변에 명시
+  - 상시 여부만 신청 기간 구분 코드(`0057002`)로 판단. API의 마감 코드는 갱신을 신뢰하기 어려워 사용하지 않음
+  - 나머지는 신청 기간과 오늘 날짜를 비교 (마감일 경과 → 마감, 시작일 이전 → 신청 예정, 그 외 → 신청 가능). 날짜가 하나만 있으면 있는 날짜로 판단
+  - 상시 코드도 날짜도 없으면 정보 없음 (공고 확인 안내)
+- 프로필 코드 값은 `common_code`에서 요청마다 필요한 코드만 조회해 이름으로 변환 후 전달. 지역은 코드 사전이 적재되면 같은 방식으로 반영 (그 전까지 제외)
 - 사실 정보는 **검색 근거에서만**. 이전 답변을 사실 근거로 재사용 금지
 - 근거가 없으면 모른다고 답함
 - 출처(정책명, `application_url`/`reference_url_*`) 표시
