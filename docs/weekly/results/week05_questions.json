@@ -1,0 +1,2636 @@
+{
+  "meta": {
+    "run_at": "2026-10-03T19:20:39",
+    "today": "2026-10-03",
+    "data": "로컬 가짜 데이터 (정책 25개, TEST- 접두어)",
+    "retriever": "vector",
+    "top_k": 10,
+    "embedding_model": "text-embedding-3-small",
+    "chat_model": "gpt-6-luna"
+  },
+  "results": [
+    {
+      "id": "L1",
+      "type": "정책 목록",
+      "question": "주거 관련 지원 정책 전부 알려줘",
+      "expected": "주거 정책 5개(월세, 전세 이자, 공공임대, 이사비, 상담 센터) 모두 안내",
+      "profile": {},
+      "response": {
+        "answer": "근거에 있는 주거 관련 정책은 5개예요. 프로필 정보가 없어 지원 자격은 판단할 수 없으니, 아래 조건을 확인해 주세요.\n\n- 청년 월세 지원 — 신청 가능(2026년 9월 1일~10월 31일): 부모와 따로 사는 무주택 청년에게 실제 납부한 월세 범위에서 월 최대 20만 원씩 최대 12개월 지원해요. 본인 연소득 4,000만 원 이하, 원가구 소득 기준 중위소득 100% 이하 등의 조건이 있고, 보증금 5천만 원 이하·월세 60만 원 이하 주택에 거주해야 해요. 주택 소유자, 공공임대주택 거주자, 부모와 같은 주소지에 사는 경우는 대상이 아니에요.\n- 청년 이사비 지원 — 신청 가능(2026년 9월 1일~10월 31일): 이사한 무주택 청년에게 이사비와 중개수수료를 합쳐 최대 40만 원을 지원해요. 연소득 4,000만 원 이하 등 조건이 있으며, 이사 후 3개월 이내에 신청해야 해요. 1인 1회 지원이에요.\n- 청년 전세보증금 대출 이자 지원 — 신청 가능(2026년 7월 1일~12월 31일): 연소득 5,000만 원 이하 무주택 청년 중 협약 은행에서 전세보증금 대출을 받은 경우, 대출 이자를 연 최대 2%까지 지원해요.\n- 청년 주거 상담 센터 — 상시 모집: 전월세 계약, 전세 사기 예방, 주거 지원 정책 등에 대해 무료로 상담하고 계약서 검토와 등기부등본 확인 방법도 안내해요.\n- 자립준비청년 정착 지원 — 상시 모집: 보호시설에서 나온 자립준비청년에게 정착금과 자립수당을 지원하며 주거·취업 상담도 제공해요. 나이 조건은 18~29세예요.\n\n가장 직접적인 주거비 지원인 청년 월세 지원은 온라인 또는 주민센터에서 신청할 수 있어요. 신분증, 임대차계약서, 월세 이체 내역, 소득 증빙 서류가 필요해요. 신청 링크: https://example.com/youthlink/policy/TEST-HOU-01",
+        "policies": [
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.4727994335313921
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.43962335039612555
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.43346042510652694
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.42686971999360646
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.4142079669588339
+          },
+          {
+            "policy_no": "TEST-WEL-04",
+            "policy_name": "청년 대중교통비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-04",
+            "score": 0.41190827667457186
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.3859086996324683
+          },
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.38214289567341586
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 2466,
+            "policy_lookup": 3,
+            "generate": 11533,
+            "total": 14003
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.4727994335313921
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.43962335039612555
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.43346042510652694
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.42686971999360646
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.4142079669588339
+            },
+            {
+              "chunk_id": "b02b2fd0-e79b-4934-aedf-4a054d2d0c04",
+              "policy_no": "TEST-WEL-04",
+              "chunk_type": "full",
+              "score": 0.41190827667457186
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.4111813827932178
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.3859086996324683
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.3841106051534182
+            },
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.38214289567341586
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2866,
+            "completion": 1073
+          }
+        }
+      }
+    },
+    {
+      "id": "L2",
+      "type": "정책 목록",
+      "question": "지금 신청 가능한 일자리 정책만 알려줘",
+      "expected": "구직 응원금, 인턴십, 직업훈련, 취업 컨설팅. 마감된 중소기업 장려금 제외",
+      "profile": {},
+      "response": {
+        "answer": "현재 신청 가능한 일자리 관련 정책은 다음과 같아요.\n\n- 청년 지역기업 인턴십 — 신청 가능(2026년 12월 31일까지). 18~34세, 고교 졸업 이상 대상이며, 지역 중소기업에서 3개월간 인턴으로 근무해요. 월 급여를 시가 지원하고 희망 직무를 선택할 수 있어요.\n- 청년 구직활동 응원금 — 신청 가능(2026년 10월 31일까지). 졸업·중퇴 후 2년 이내의 미취업 청년 대상이며, 나이·소득 등 별도 조건이 있어요. 다른 기관의 구직 지원금을 받거나 주 30시간 이상 근무 중이면 지원 대상에서 제외돼요.\n- 청년 1:1 취업 컨설팅 — 상시 모집. 이력서·자기소개서 첨삭과 모의 면접을 무료로 지원해요.\n- 청년 직업훈련 수강비 지원 — 상시 모집. 연소득 5,000만 원 이하 조건이 있으며, 출석률 80% 이상이면 전액 지원돼요. 예산 소진 시 조기 마감될 수 있어요.\n- 청년 온라인 직무 강좌 — 상시 모집. 데이터 분석, 디지털 마케팅 등 직무 강좌를 무료로 수강할 수 있어요.\n\n가장 직접적인 취업 기회를 제공하는 청년 지역기업 인턴십은 온라인 신청 후 기업 면접을 진행해요. 이력서, 자기소개서, 최종학력 증명서를 제출하면 되고, 신청 링크는 https://example.com/youthlink/policy/TEST-JOB-02예요.",
+        "policies": [
+          {
+            "policy_no": "TEST-JOB-02",
+            "policy_name": "청년 지역기업 인턴십",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-02",
+            "score": 0.43977491820397474
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.4202682628708003
+          },
+          {
+            "policy_no": "TEST-EDU-05",
+            "policy_name": "청년 온라인 직무 강좌",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-05",
+            "score": 0.4192843114845427
+          },
+          {
+            "policy_no": "TEST-EDU-03",
+            "policy_name": "청년 자격증 응시료 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-03",
+            "score": 0.4048056403771918
+          },
+          {
+            "policy_no": "TEST-HOU-03",
+            "policy_name": "청년 공공임대주택 입주자 모집",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-03",
+            "score": 0.40326756519649853
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.40079569283049743
+          },
+          {
+            "policy_no": "TEST-JOB-04",
+            "policy_name": "청년 1:1 취업 컨설팅",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-04",
+            "score": 0.391894891125105
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.37243255790282925
+          },
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.3675776277112732
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 1291,
+            "policy_lookup": 3,
+            "generate": 10154,
+            "total": 11449
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "a7c866f2-b49a-46b7-9057-42a4402064da",
+              "policy_no": "TEST-JOB-02",
+              "chunk_type": "full",
+              "score": 0.43977491820397474
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.4202682628708003
+            },
+            {
+              "chunk_id": "aa25e25b-007d-4315-b99f-34bc04fa0a70",
+              "policy_no": "TEST-EDU-05",
+              "chunk_type": "full",
+              "score": 0.4192843114845427
+            },
+            {
+              "chunk_id": "e1d8ba1e-b7f7-4b9e-83ca-e62af0ce7e7d",
+              "policy_no": "TEST-EDU-03",
+              "chunk_type": "full",
+              "score": 0.4048056403771918
+            },
+            {
+              "chunk_id": "e0c4cdd5-6b52-4045-8ef1-bfda0a2c621d",
+              "policy_no": "TEST-HOU-03",
+              "chunk_type": "full",
+              "score": 0.40326756519649853
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.40079569283049743
+            },
+            {
+              "chunk_id": "0dfe8d00-b5dd-46de-afa5-df3a40ac57b1",
+              "policy_no": "TEST-JOB-04",
+              "chunk_type": "full",
+              "score": 0.391894891125105
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.37668938227369475
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.37243255790282925
+            },
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.3675776277112732
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2811,
+            "completion": 960
+          }
+        }
+      }
+    },
+    {
+      "id": "D1",
+      "type": "정책 상세",
+      "question": "청년 구직활동 응원금 지원 금액이랑 기간 알려줘",
+      "expected": "월 50만 원, 최대 6개월 + 취업 성공 축하금 50만 원 (2청크 정책)",
+      "profile": {},
+      "response": {
+        "answer": "청년 구직활동 응원금은 월 50만 원씩 최대 6개월 동안 지원해요. 지원 기간 중 취업에 성공하면 취업 성공 축하금 50만 원을 한 번 더 받을 수 있어요.\n\n현재 신청 가능하며, 신청 기간은 2026년 9월 1일부터 10월 31일까지예요. 온라인으로 신청하면 자격 심사 후 선정 결과를 문자로 안내해요.\n\n- 신청 링크: https://example.com/youthlink/policy/TEST-JOB-01",
+        "policies": [
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.6944066284719498
+          },
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.5253037227344242
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.5163396147143212
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.513517185569752
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.5014168733542889
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.49783821471006884
+          },
+          {
+            "policy_no": "TEST-FIN-05",
+            "policy_name": "청년 창업자금 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-05",
+            "score": 0.49672131429902167
+          },
+          {
+            "policy_no": "TEST-FIN-02",
+            "policy_name": "청년 소액 생활자금 대출",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-02",
+            "score": 0.4879940101857423
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 152,
+            "policy_lookup": 3,
+            "generate": 3342,
+            "total": 3499
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.6944066284719498
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.6705623181685635
+            },
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.5253037227344242
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.5163396147143212
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.513517185569752
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.5059414743101163
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.5014168733542889
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.49783821471006884
+            },
+            {
+              "chunk_id": "539b59e4-6322-46e4-b2e2-2185a36c7012",
+              "policy_no": "TEST-FIN-05",
+              "chunk_type": "full",
+              "score": 0.49672131429902167
+            },
+            {
+              "chunk_id": "a48e982f-b557-4ea2-b8db-eb08449037c4",
+              "policy_no": "TEST-FIN-02",
+              "chunk_type": "full",
+              "score": 0.4879940101857423
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2856,
+            "completion": 201
+          }
+        }
+      }
+    },
+    {
+      "id": "D2",
+      "type": "정책 상세",
+      "question": "청년 자산형성 적금 중도 해지하면 어떻게 돼?",
+      "expected": "시 지원금 없이 본인 저축액과 이자만, 불가피한 사유는 심사 후 일부 지원",
+      "profile": {},
+      "response": {
+        "answer": "청년 자산형성 적금은 중도 해지하면 시 지원금은 받을 수 없고, 본인이 저축한 금액과 이자만 돌려받아요. 다만 결혼·출산·질병 등 불가피한 사유라면 심사를 거쳐 지원금 일부를 받을 수 있어요.\n\n- 청년 자산형성 적금 — 신청 가능(2026년 9월 1일~10월 31일)\n- 신청은 온라인으로 한 뒤 소득 심사를 받아요. 선정되면 협약 은행 계좌를 개설해요.\n- 담당 기관: 가람시 청년정책과\n- 신청 링크: https://example.com/youthlink/policy/TEST-FIN-01",
+        "policies": [
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.5847031103871275
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.40472382664491846
+          },
+          {
+            "policy_no": "TEST-FIN-02",
+            "policy_name": "청년 소액 생활자금 대출",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-02",
+            "score": 0.36362423312156955
+          },
+          {
+            "policy_no": "TEST-HOU-03",
+            "policy_name": "청년 공공임대주택 입주자 모집",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-03",
+            "score": 0.35800220366498325
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.35643799039698265
+          },
+          {
+            "policy_no": "TEST-WEL-04",
+            "policy_name": "청년 대중교통비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-04",
+            "score": 0.35143085641991034
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.34606659520075234
+          },
+          {
+            "policy_no": "TEST-FIN-04",
+            "policy_name": "청년 금융 교육",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-04",
+            "score": 0.34584189425036727
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.3400803800369181
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.33974300870774143
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 363,
+            "policy_lookup": 4,
+            "generate": 3999,
+            "total": 4367
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.5847031103871275
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.40472382664491846
+            },
+            {
+              "chunk_id": "a48e982f-b557-4ea2-b8db-eb08449037c4",
+              "policy_no": "TEST-FIN-02",
+              "chunk_type": "full",
+              "score": 0.36362423312156955
+            },
+            {
+              "chunk_id": "e0c4cdd5-6b52-4045-8ef1-bfda0a2c621d",
+              "policy_no": "TEST-HOU-03",
+              "chunk_type": "full",
+              "score": 0.35800220366498325
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.35643799039698265
+            },
+            {
+              "chunk_id": "b02b2fd0-e79b-4934-aedf-4a054d2d0c04",
+              "policy_no": "TEST-WEL-04",
+              "chunk_type": "full",
+              "score": 0.35143085641991034
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.34606659520075234
+            },
+            {
+              "chunk_id": "40472e87-7f04-40d7-8541-2d9ffa9b6190",
+              "policy_no": "TEST-FIN-04",
+              "chunk_type": "full",
+              "score": 0.34584189425036727
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.3400803800369181
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.33974300870774143
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 3027,
+            "completion": 275
+          }
+        }
+      }
+    },
+    {
+      "id": "F1",
+      "type": "후속 질문",
+      "question": "그 정책 신청 서류 뭐 필요해?",
+      "expected": "맥락이 없으므로 어떤 정책인지 되묻기",
+      "profile": {},
+      "response": {
+        "answer": "어떤 정책을 말씀하시는지 알려주세요. 정책마다 필요한 서류가 달라요. 정책 이름을 알려주시면 제출 서류를 안내해 드릴게요.",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.3856407518941285
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.36742076632997445
+          },
+          {
+            "policy_no": "TEST-JOB-04",
+            "policy_name": "청년 1:1 취업 컨설팅",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-04",
+            "score": 0.36307762692370105
+          },
+          {
+            "policy_no": "TEST-EDU-03",
+            "policy_name": "청년 자격증 응시료 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-03",
+            "score": 0.3597448767246195
+          },
+          {
+            "policy_no": "TEST-EDU-05",
+            "policy_name": "청년 온라인 직무 강좌",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-05",
+            "score": 0.3571735310865328
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.3551590219767462
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.3508697196378967
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.33871937990679835
+          },
+          {
+            "policy_no": "TEST-WEL-01",
+            "policy_name": "청년 마음건강 상담",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-01",
+            "score": 0.33530181786704527
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 154,
+            "policy_lookup": 4,
+            "generate": 3717,
+            "total": 3876
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.3856407518941285
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.36742076632997445
+            },
+            {
+              "chunk_id": "0dfe8d00-b5dd-46de-afa5-df3a40ac57b1",
+              "policy_no": "TEST-JOB-04",
+              "chunk_type": "full",
+              "score": 0.36307762692370105
+            },
+            {
+              "chunk_id": "e1d8ba1e-b7f7-4b9e-83ca-e62af0ce7e7d",
+              "policy_no": "TEST-EDU-03",
+              "chunk_type": "full",
+              "score": 0.3597448767246195
+            },
+            {
+              "chunk_id": "aa25e25b-007d-4315-b99f-34bc04fa0a70",
+              "policy_no": "TEST-EDU-05",
+              "chunk_type": "full",
+              "score": 0.3571735310865328
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.3551590219767462
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.3508697196378967
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.3472986228030286
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.33871937990679835
+            },
+            {
+              "chunk_id": "edead9a3-68d0-486d-868e-87419cea241b",
+              "policy_no": "TEST-WEL-01",
+              "chunk_type": "full",
+              "score": 0.33530181786704527
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2710,
+            "completion": 173
+          }
+        }
+      }
+    },
+    {
+      "id": "F2",
+      "type": "후속 질문",
+      "question": "두 번째 거 자세히 알려줘",
+      "expected": "맥락이 없으므로 어떤 정책인지 되묻기",
+      "profile": {},
+      "response": {
+        "answer": "청년 1:1 취업 컨설팅은 이력서와 자기소개서 작성, 모의 면접을 전문 컨설턴트가 1:1로 도와주는 무료 서비스예요. 온라인 화상 상담도 가능하고, 1인당 최대 5회까지 이용할 수 있어요.\n\n- 신청 상태: 상시 모집\n- 대상 조건: 19~34세, 학력·소득 조건 무관\n- 제출 서류: 없음\n- 담당 기관: 가람시 청년정책과\n\n프로필 정보가 없어 대상 여부를 판단할 수는 없어요. 신청 방법은 온라인 예약이며, 자세한 내용은 [신청 링크](https://example.com/youthlink/policy/TEST-JOB-04)에서 확인해 주세요.",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.20948856491203094
+          },
+          {
+            "policy_no": "TEST-JOB-04",
+            "policy_name": "청년 1:1 취업 컨설팅",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-04",
+            "score": 0.20529423595777652
+          },
+          {
+            "policy_no": "TEST-WEL-01",
+            "policy_name": "청년 마음건강 상담",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-01",
+            "score": 0.19151978559812244
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.18969043396277152
+          },
+          {
+            "policy_no": "TEST-EDU-03",
+            "policy_name": "청년 자격증 응시료 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-03",
+            "score": 0.17919448846650765
+          },
+          {
+            "policy_no": "TEST-HOU-03",
+            "policy_name": "청년 공공임대주택 입주자 모집",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-03",
+            "score": 0.17076454824128207
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.16921228213059525
+          },
+          {
+            "policy_no": "TEST-FIN-02",
+            "policy_name": "청년 소액 생활자금 대출",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-02",
+            "score": 0.16792653551082926
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.1612853776998302
+          },
+          {
+            "policy_no": "TEST-FIN-04",
+            "policy_name": "청년 금융 교육",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-04",
+            "score": 0.16094673058889886
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 153,
+            "policy_lookup": 5,
+            "generate": 4254,
+            "total": 4414
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.20948856491203094
+            },
+            {
+              "chunk_id": "0dfe8d00-b5dd-46de-afa5-df3a40ac57b1",
+              "policy_no": "TEST-JOB-04",
+              "chunk_type": "full",
+              "score": 0.20529423595777652
+            },
+            {
+              "chunk_id": "edead9a3-68d0-486d-868e-87419cea241b",
+              "policy_no": "TEST-WEL-01",
+              "chunk_type": "full",
+              "score": 0.19151978559812244
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.18969043396277152
+            },
+            {
+              "chunk_id": "e1d8ba1e-b7f7-4b9e-83ca-e62af0ce7e7d",
+              "policy_no": "TEST-EDU-03",
+              "chunk_type": "full",
+              "score": 0.17919448846650765
+            },
+            {
+              "chunk_id": "e0c4cdd5-6b52-4045-8ef1-bfda0a2c621d",
+              "policy_no": "TEST-HOU-03",
+              "chunk_type": "full",
+              "score": 0.17076454824128207
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.16921228213059525
+            },
+            {
+              "chunk_id": "a48e982f-b557-4ea2-b8db-eb08449037c4",
+              "policy_no": "TEST-FIN-02",
+              "chunk_type": "full",
+              "score": 0.16792653551082926
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.1612853776998302
+            },
+            {
+              "chunk_id": "40472e87-7f04-40d7-8541-2d9ffa9b6190",
+              "policy_no": "TEST-FIN-04",
+              "chunk_type": "full",
+              "score": 0.16094673058889886
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2722,
+            "completion": 273
+          }
+        }
+      }
+    },
+    {
+      "id": "E1",
+      "type": "자격 확인",
+      "question": "청년 월세 지원 받을 수 있어?",
+      "profile": {
+        "age": 36,
+        "annual_income": 45000000
+      },
+      "expected": "나이(19~34세)와 소득(4,000만 원 이하) 모두 맞지 않음을 설명",
+      "response": {
+        "answer": "현재 프로필 기준으로는 청년 월세 지원 대상에 해당하기 어려워 보여요. 나이 기준은 19~34세인데 36세이고, 연소득 기준은 4,000만 원 이하인데 연소득이 4,500만 원이기 때문이에요. 부모와 따로 사는지, 무주택인지 등 다른 조건도 충족해야 하며 최종 자격은 공고에서 확인해야 해요.\n\n- 청년 월세 지원은 신청 가능 상태이며, 신청 기간은 2026년 9월 1일부터 10월 31일까지예요.\n- 신청 방법은 온라인 또는 주민센터 방문 신청이에요. 담당 기관은 가람시 청년정책과예요.\n- 신청 링크: https://example.com/youthlink/policy/TEST-HOU-01",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.6084491243823364
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.5445379808142256
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.5011079380838328
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.494179166026427
+          },
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.46715209391239565
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.44273408640778067
+          },
+          {
+            "policy_no": "TEST-FIN-05",
+            "policy_name": "청년 창업자금 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-05",
+            "score": 0.44256310467953064
+          },
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.4423113476746925
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.4408580118680103
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 202,
+            "policy_lookup": 2,
+            "generate": 6222,
+            "total": 6427
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.6084491243823364
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.6038850193751354
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.5445379808142256
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.5011079380838328
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.494179166026427
+            },
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.46715209391239565
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.44273408640778067
+            },
+            {
+              "chunk_id": "539b59e4-6322-46e4-b2e2-2185a36c7012",
+              "policy_no": "TEST-FIN-05",
+              "chunk_type": "full",
+              "score": 0.44256310467953064
+            },
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.4423113476746925
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.4408580118680103
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2994,
+            "completion": 437
+          }
+        }
+      }
+    },
+    {
+      "id": "E2",
+      "type": "자격 확인",
+      "question": "청년 자산형성 적금 가입할 수 있어?",
+      "profile": {
+        "age": 27,
+        "annual_income": 24000000,
+        "job_code": "0013001"
+      },
+      "expected": "나이·소득·근로소득 조건상 해당될 수 있음, 최종 확인은 공고",
+      "response": {
+        "answer": "조건상 청년 자산형성 적금에 가입할 수 있을 가능성이 있어요. 나이와 연소득이 각각 기준인 19~34세, 연소득 3,600만 원 이하에 해당하고, 현재 재직 중이기 때문이에요. 다만 근로소득이 있어야 하며 가입 기간 동안 근로 활동을 유지해야 하므로, 최종 자격은 소득 심사와 공고에서 확인해 주세요.\n\n- 청년 자산형성 적금 — 신청 가능: 2026년 10월 31일까지 신청할 수 있어요.\n- 매월 10만 원을 3년간 저축하면 시가 같은 금액을 적립해 줘요.\n- 온라인으로 신청한 뒤 소득 심사를 받고, 선정되면 협약 은행 계좌를 개설해요.\n- 제출 서류: 신분증, 근로소득 원천징수영수증, 재직증명서\n\n신청 링크: https://example.com/youthlink/policy/TEST-FIN-01",
+        "policies": [
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.5879190705102162
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.4526034177457541
+          },
+          {
+            "policy_no": "TEST-FIN-04",
+            "policy_name": "청년 금융 교육",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-04",
+            "score": 0.4192364115970646
+          },
+          {
+            "policy_no": "TEST-FIN-02",
+            "policy_name": "청년 소액 생활자금 대출",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-02",
+            "score": 0.3970469074131363
+          },
+          {
+            "policy_no": "TEST-FIN-05",
+            "policy_name": "청년 창업자금 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-05",
+            "score": 0.39629200833157285
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.3929828688670046
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.3919278583545662
+          },
+          {
+            "policy_no": "TEST-HOU-03",
+            "policy_name": "청년 공공임대주택 입주자 모집",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-03",
+            "score": 0.38741573451716693
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.3849711947242158
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.3799488324334376
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 157,
+            "policy_lookup": 3,
+            "generate": 4285,
+            "total": 4446
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.5879190705102162
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.4526034177457541
+            },
+            {
+              "chunk_id": "40472e87-7f04-40d7-8541-2d9ffa9b6190",
+              "policy_no": "TEST-FIN-04",
+              "chunk_type": "full",
+              "score": 0.4192364115970646
+            },
+            {
+              "chunk_id": "a48e982f-b557-4ea2-b8db-eb08449037c4",
+              "policy_no": "TEST-FIN-02",
+              "chunk_type": "full",
+              "score": 0.3970469074131363
+            },
+            {
+              "chunk_id": "539b59e4-6322-46e4-b2e2-2185a36c7012",
+              "policy_no": "TEST-FIN-05",
+              "chunk_type": "full",
+              "score": 0.39629200833157285
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.3929828688670046
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.3919278583545662
+            },
+            {
+              "chunk_id": "e0c4cdd5-6b52-4045-8ef1-bfda0a2c621d",
+              "policy_no": "TEST-HOU-03",
+              "chunk_type": "full",
+              "score": 0.38741573451716693
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.3849711947242158
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.3799488324334376
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 3152,
+            "completion": 334
+          }
+        }
+      }
+    },
+    {
+      "id": "C1",
+      "type": "비교",
+      "question": "월세 지원이랑 이사비 지원 차이가 뭐야?",
+      "expected": "두 정책 모두 검색되고 지원 내용·금액·신청 시기 비교",
+      "profile": {},
+      "response": {
+        "answer": "두 지원은 목적과 신청 조건이 달라요.\n\n- 청년 월세 지원 — 신청 가능: 부모와 따로 사는 무주택 청년의 실제 월세를 지원해요. 월 최대 20만 원씩 최대 12개월까지 지원하며, 보증금 5천만 원 이하·월세 60만 원 이하 주택에 거주해야 해요. 본인 연소득 4천만 원 이하와 원가구 소득 기준도 있어요. 신청 기간은 2026년 10월 31일까지예요.\n- 청년 이사비 지원 — 신청 가능: 이사비와 중개수수료를 합쳐 최대 40만 원까지 지원해요. 이사 후 3개월 이내에 신청해야 하고, 1인 1회만 지원해요. 신청 기간은 2026년 10월 31일까지예요.\n\n월세 지원은 매달 내는 월세 부담을 덜어주는 제도이고, 이사비 지원은 이사할 때 든 비용을 보조하는 제도예요. 두 정책 모두 19~34세, 무주택, 연소득 4천만 원 이하 조건이 공고에 있지만, 최종 자격은 공고에서 확인해야 해요.\n\n- 청년 월세 지원은 온라인 또는 주민센터에서 신청할 수 있어요. 신분증, 임대차계약서, 월세 이체 내역, 소득 증빙 서류가 필요해요: https://example.com/youthlink/policy/TEST-HOU-01\n- 청년 이사비 지원은 온라인 신청이에요. 임대차계약서, 이사비 영수증, 중개수수료 영수증이 필요해요: https://example.com/youthlink/policy/TEST-HOU-04",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.5025401320515481
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.4789583741899077
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.40293787863861563
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.36283816641815103
+          },
+          {
+            "policy_no": "TEST-EDU-02",
+            "policy_name": "학자금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-02",
+            "score": 0.34881151438415114
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.3336423881501752
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.3311416263475926
+          },
+          {
+            "policy_no": "TEST-EDU-03",
+            "policy_name": "청년 자격증 응시료 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-03",
+            "score": 0.32914203721036017
+          },
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.32460456711137486
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 160,
+            "policy_lookup": 7,
+            "generate": 4950,
+            "total": 5118
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.5025401320515481
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.4789583741899077
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.4499566544601006
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.40293787863861563
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.36283816641815103
+            },
+            {
+              "chunk_id": "7a0126aa-1285-4b5e-9ce8-0b958e9f8e29",
+              "policy_no": "TEST-EDU-02",
+              "chunk_type": "full",
+              "score": 0.34881151438415114
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.3336423881501752
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.3311416263475926
+            },
+            {
+              "chunk_id": "e1d8ba1e-b7f7-4b9e-83ca-e62af0ce7e7d",
+              "policy_no": "TEST-EDU-03",
+              "chunk_type": "full",
+              "score": 0.32914203721036017
+            },
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.32460456711137486
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2943,
+            "completion": 465
+          }
+        }
+      }
+    },
+    {
+      "id": "C2",
+      "type": "비교",
+      "question": "직업훈련 수강비 지원이랑 자격증 응시료 지원 중에 뭐가 나아?",
+      "expected": "차이는 설명하되 근거 없는 우열 판단은 피함",
+      "profile": {},
+      "response": {
+        "answer": "목적에 따라 달라요. 직업훈련 과정을 들을 계획이면 **청년 직업훈련 수강비 지원(상시 모집)**이, 자격증 시험을 이미 치렀다면 **청년 자격증 응시료 지원(신청 가능)**이 더 잘 맞아요.\n\n- 청년 직업훈련 수강비 지원: 훈련 과정 수강료를 1인당 최대 200만 원까지 지원해요. 19~39세, 연소득 5,000만 원 이하가 조건이고, 출석률 80% 이상이어야 전액 지원돼요. 상시 신청할 수 있지만 예산 소진 시 조기 마감될 수 있어요.\n- 청년 자격증 응시료 지원: 국가기술자격증·국가공인 민간자격증 응시료를 연 최대 30만 원까지 지원해요. 19~34세 대상이며 소득 조건은 없어요. 응시 후 신청하고, 같은 자격증은 연 2회까지 인정돼요.\n\n나이와 소득 정보가 없어 어느 쪽이 자격 조건에 더 맞는지는 판단하기 어려워요. 훈련비 지원은 훈련기관에 등록한 뒤 온라인으로 신청하고, 신분증과 훈련 등록 확인서를 제출해요. 가람시 청년정책과 안내: https://example.com/youthlink/policy/TEST-JOB-03  \n자격증 응시료 지원은 응시 후 온라인으로 신청해요: https://example.com/youthlink/policy/TEST-EDU-03",
+        "policies": [
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.5946387832962188
+          },
+          {
+            "policy_no": "TEST-EDU-03",
+            "policy_name": "청년 자격증 응시료 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-03",
+            "score": 0.5582105107138988
+          },
+          {
+            "policy_no": "TEST-WEL-02",
+            "policy_name": "청년 건강검진 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-02",
+            "score": 0.5132047616347478
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.5012240930763108
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.4715446287462166
+          },
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.43104946436124436
+          },
+          {
+            "policy_no": "TEST-EDU-02",
+            "policy_name": "학자금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-02",
+            "score": 0.43056585575274786
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.4291333146505393
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.41312730770509487
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 153,
+            "policy_lookup": 3,
+            "generate": 6501,
+            "total": 6658
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.5946387832962188
+            },
+            {
+              "chunk_id": "e1d8ba1e-b7f7-4b9e-83ca-e62af0ce7e7d",
+              "policy_no": "TEST-EDU-03",
+              "chunk_type": "full",
+              "score": 0.5582105107138988
+            },
+            {
+              "chunk_id": "4ee1472a-9927-46fc-843f-f325d6f007ed",
+              "policy_no": "TEST-WEL-02",
+              "chunk_type": "full",
+              "score": 0.5132047616347478
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.5012240930763108
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.4715446287462166
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.4688828115150101
+            },
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.43104946436124436
+            },
+            {
+              "chunk_id": "7a0126aa-1285-4b5e-9ce8-0b958e9f8e29",
+              "policy_no": "TEST-EDU-02",
+              "chunk_type": "full",
+              "score": 0.43056585575274786
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.4291333146505393
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.41312730770509487
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2838,
+            "completion": 527
+          }
+        }
+      }
+    },
+    {
+      "id": "O1",
+      "type": "범위 밖",
+      "question": "오늘 날씨 어때?",
+      "expected": "정책 안내만 가능하다고 짧게 답변",
+      "profile": {},
+      "response": {
+        "answer": "날씨 정보는 제공하지 않고, 청년 지원 정책 안내만 도와드릴 수 있어요.",
+        "policies": [
+          {
+            "policy_no": "TEST-WEL-01",
+            "policy_name": "청년 마음건강 상담",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-01",
+            "score": 0.18184756710815586
+          },
+          {
+            "policy_no": "TEST-FIN-04",
+            "policy_name": "청년 금융 교육",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-04",
+            "score": 0.17865535692166223
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.16812799506158738
+          },
+          {
+            "policy_no": "TEST-JOB-04",
+            "policy_name": "청년 1:1 취업 컨설팅",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-04",
+            "score": 0.160397980288848
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.15982690114104026
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.14593459628019656
+          },
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.1358645699316181
+          },
+          {
+            "policy_no": "TEST-EDU-05",
+            "policy_name": "청년 온라인 직무 강좌",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-05",
+            "score": 0.12976909727884667
+          },
+          {
+            "policy_no": "TEST-WEL-03",
+            "policy_name": "청년 문화 바우처",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-03",
+            "score": 0.12276354433715841
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 142,
+            "policy_lookup": 4,
+            "generate": 1937,
+            "total": 2083
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "edead9a3-68d0-486d-868e-87419cea241b",
+              "policy_no": "TEST-WEL-01",
+              "chunk_type": "full",
+              "score": 0.18184756710815586
+            },
+            {
+              "chunk_id": "40472e87-7f04-40d7-8541-2d9ffa9b6190",
+              "policy_no": "TEST-FIN-04",
+              "chunk_type": "full",
+              "score": 0.17865535692166223
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.16812799506158738
+            },
+            {
+              "chunk_id": "0dfe8d00-b5dd-46de-afa5-df3a40ac57b1",
+              "policy_no": "TEST-JOB-04",
+              "chunk_type": "full",
+              "score": 0.160397980288848
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.15982690114104026
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.14593459628019656
+            },
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.1358645699316181
+            },
+            {
+              "chunk_id": "aa25e25b-007d-4315-b99f-34bc04fa0a70",
+              "policy_no": "TEST-EDU-05",
+              "chunk_type": "full",
+              "score": 0.12976909727884667
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.12429894643708639
+            },
+            {
+              "chunk_id": "e7902b47-3b79-4515-9369-9c471397a87c",
+              "policy_no": "TEST-WEL-03",
+              "chunk_type": "full",
+              "score": 0.12276354433715841
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2809,
+            "completion": 26
+          }
+        }
+      }
+    },
+    {
+      "id": "O2",
+      "type": "범위 밖",
+      "question": "주식 투자 종목 추천해줘",
+      "expected": "범위 밖 안내, 금융 교육 정책을 억지로 연결하지 않음",
+      "profile": {},
+      "response": {
+        "answer": "주식 투자 종목 추천은 도와드릴 수 없어요. 청년 지원 정책 안내는 도와드릴 수 있어요.",
+        "policies": [
+          {
+            "policy_no": "TEST-JOB-02",
+            "policy_name": "청년 지역기업 인턴십",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-02",
+            "score": 0.24404938042542623
+          },
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.24103808322477038
+          },
+          {
+            "policy_no": "TEST-FIN-05",
+            "policy_name": "청년 창업자금 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-05",
+            "score": 0.2365598970627898
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.23189649384823074
+          },
+          {
+            "policy_no": "TEST-HOU-03",
+            "policy_name": "청년 공공임대주택 입주자 모집",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-03",
+            "score": 0.21899979130561387
+          },
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.2178653920959489
+          },
+          {
+            "policy_no": "TEST-WEL-04",
+            "policy_name": "청년 대중교통비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-04",
+            "score": 0.2122292712497844
+          },
+          {
+            "policy_no": "TEST-WEL-02",
+            "policy_name": "청년 건강검진 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-02",
+            "score": 0.21085076429683336
+          },
+          {
+            "policy_no": "TEST-FIN-04",
+            "policy_name": "청년 금융 교육",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-04",
+            "score": 0.21016938602378943
+          },
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.20656533781631947
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 129,
+            "policy_lookup": 3,
+            "generate": 2259,
+            "total": 2392
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "a7c866f2-b49a-46b7-9057-42a4402064da",
+              "policy_no": "TEST-JOB-02",
+              "chunk_type": "full",
+              "score": 0.24404938042542623
+            },
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.24103808322477038
+            },
+            {
+              "chunk_id": "539b59e4-6322-46e4-b2e2-2185a36c7012",
+              "policy_no": "TEST-FIN-05",
+              "chunk_type": "full",
+              "score": 0.2365598970627898
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.23189649384823074
+            },
+            {
+              "chunk_id": "e0c4cdd5-6b52-4045-8ef1-bfda0a2c621d",
+              "policy_no": "TEST-HOU-03",
+              "chunk_type": "full",
+              "score": 0.21899979130561387
+            },
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.2178653920959489
+            },
+            {
+              "chunk_id": "b02b2fd0-e79b-4934-aedf-4a054d2d0c04",
+              "policy_no": "TEST-WEL-04",
+              "chunk_type": "full",
+              "score": 0.2122292712497844
+            },
+            {
+              "chunk_id": "4ee1472a-9927-46fc-843f-f325d6f007ed",
+              "policy_no": "TEST-WEL-02",
+              "chunk_type": "full",
+              "score": 0.21085076429683336
+            },
+            {
+              "chunk_id": "40472e87-7f04-40d7-8541-2d9ffa9b6190",
+              "policy_no": "TEST-FIN-04",
+              "chunk_type": "full",
+              "score": 0.21016938602378943
+            },
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.20656533781631947
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2908,
+            "completion": 60
+          }
+        }
+      }
+    },
+    {
+      "id": "U1",
+      "type": "판단 불가",
+      "question": "그거 어때?",
+      "expected": "무엇을 묻는지 되묻기",
+      "profile": {},
+      "response": {
+        "answer": "어떤 정책을 말씀하시는지 알려주세요. 예를 들어 구직활동 응원금이나 자산형성 적금처럼 정책 이름을 알려주시면 신청 조건과 혜택을 정리해드릴게요.",
+        "policies": [
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.17092002191623923
+          },
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.162536657105399
+          },
+          {
+            "policy_no": "TEST-WEL-04",
+            "policy_name": "청년 대중교통비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-04",
+            "score": 0.15200074933902397
+          },
+          {
+            "policy_no": "TEST-JOB-02",
+            "policy_name": "청년 지역기업 인턴십",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-02",
+            "score": 0.15197147630034502
+          },
+          {
+            "policy_no": "TEST-FIN-01",
+            "policy_name": "청년 자산형성 적금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-01",
+            "score": 0.1504995720972293
+          },
+          {
+            "policy_no": "TEST-EDU-05",
+            "policy_name": "청년 온라인 직무 강좌",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-05",
+            "score": 0.14572842027801713
+          },
+          {
+            "policy_no": "TEST-EDU-02",
+            "policy_name": "학자금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-02",
+            "score": 0.1412006654085871
+          },
+          {
+            "policy_no": "TEST-JOB-04",
+            "policy_name": "청년 1:1 취업 컨설팅",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-04",
+            "score": 0.14045184352705264
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.13978203089817776
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 170,
+            "policy_lookup": 5,
+            "generate": 2767,
+            "total": 2943
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.17092002191623923
+            },
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.162536657105399
+            },
+            {
+              "chunk_id": "b02b2fd0-e79b-4934-aedf-4a054d2d0c04",
+              "policy_no": "TEST-WEL-04",
+              "chunk_type": "full",
+              "score": 0.15200074933902397
+            },
+            {
+              "chunk_id": "a7c866f2-b49a-46b7-9057-42a4402064da",
+              "policy_no": "TEST-JOB-02",
+              "chunk_type": "full",
+              "score": 0.15197147630034502
+            },
+            {
+              "chunk_id": "fe6b1be1-e251-4875-bf7a-cac8a38c1b4e",
+              "policy_no": "TEST-FIN-01",
+              "chunk_type": "full",
+              "score": 0.1504995720972293
+            },
+            {
+              "chunk_id": "aa25e25b-007d-4315-b99f-34bc04fa0a70",
+              "policy_no": "TEST-EDU-05",
+              "chunk_type": "full",
+              "score": 0.14572842027801713
+            },
+            {
+              "chunk_id": "7a0126aa-1285-4b5e-9ce8-0b958e9f8e29",
+              "policy_no": "TEST-EDU-02",
+              "chunk_type": "full",
+              "score": 0.1412006654085871
+            },
+            {
+              "chunk_id": "0dfe8d00-b5dd-46de-afa5-df3a40ac57b1",
+              "policy_no": "TEST-JOB-04",
+              "chunk_type": "full",
+              "score": 0.14045184352705264
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.13978203089817776
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.13797680128964407
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2844,
+            "completion": 132
+          }
+        }
+      }
+    },
+    {
+      "id": "U2",
+      "type": "판단 불가",
+      "question": "지원",
+      "expected": "어떤 분야 지원인지 되묻거나 분야별 안내",
+      "profile": {},
+      "response": {
+        "answer": "어떤 분야의 지원을 찾으시는지 알려주시면 더 정확히 안내해 드릴게요. 현재 신청 가능한 정책 중에는 다음이 있어요.\n\n- 청년 월세 지원 — 신청 가능(2026-10-31까지): 부모와 따로 사는 무주택 청년에게 실제 납부한 월세 범위에서 지원해요. 나이·소득·주택 조건을 확인해야 해요.\n- 청년 이사비 지원 — 신청 가능(2026-10-31까지): 이사한 무주택 청년에게 이사비와 중개수수료를 합쳐 최대 40만 원까지 지원해요. 이사 후 3개월 이내 신청해야 해요.\n- 청년 구직활동 응원금 — 신청 가능(2026-10-31까지): 구직활동을 위한 지원금이에요. 다른 기관의 구직 지원금을 받거나 주 30시간 이상 근무 중이면 대상에서 제외돼요.\n- 청년 전세보증금 대출 이자 지원 — 신청 가능(2026-12-31까지): 협약 은행에서 전세보증금 대출을 받은 무주택 청년을 지원해요.\n- 청년 주거 상담 센터 — 상시 모집: 전월세 계약, 전세 사기 예방, 주거 지원 정책 등을 무료로 상담해요.\n\n프로필 정보가 없어 지원 자격을 판단하기는 어려워요. 가장 관련 있을 수 있는 청년 월세 지원은 온라인 또는 주민센터 방문으로 신청할 수 있고, 신분증·임대차계약서·월세 이체 내역·소득 증빙 서류가 필요해요.  \n신청 링크: https://example.com/youthlink/policy/TEST-HOU-01",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-05",
+            "policy_name": "청년 주거 상담 센터",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-05",
+            "score": 0.24458267167753767
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.24111679876222247
+          },
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.23269453442145505
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.22204784056414095
+          },
+          {
+            "policy_no": "TEST-HOU-03",
+            "policy_name": "청년 공공임대주택 입주자 모집",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-03",
+            "score": 0.2142728575606494
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.20046090061038868
+          },
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.19502915597979975
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.19491665658906432
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.172306783742591
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 142,
+            "policy_lookup": 2,
+            "generate": 7557,
+            "total": 7702
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "c67751b5-3578-4d43-bb5b-4c1be64b8839",
+              "policy_no": "TEST-HOU-05",
+              "chunk_type": "full",
+              "score": 0.24458267167753767
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.24111679876222247
+            },
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.23269453442145505
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.22204784056414095
+            },
+            {
+              "chunk_id": "e0c4cdd5-6b52-4045-8ef1-bfda0a2c621d",
+              "policy_no": "TEST-HOU-03",
+              "chunk_type": "full",
+              "score": 0.2142728575606494
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.20798630254504868
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.20046090061038868
+            },
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.19502915597979975
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.19491665658906432
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.172306783742591
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2837,
+            "completion": 668
+          }
+        }
+      }
+    },
+    {
+      "id": "N1",
+      "type": "정책 없음",
+      "question": "청년 반려동물 양육비 지원 있어?",
+      "expected": "없다고 답하고 지어내지 않음",
+      "profile": {},
+      "response": {
+        "answer": "제공된 근거에서는 청년 반려동물 양육비 지원 정책을 찾지 못했어요. 해당 정책의 담당 기관이나 신청 링크도 명시되어 있지 않아 안내하기 어려워요.",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.49318611536568646
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.47112833237577467
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.456462870278155
+          },
+          {
+            "policy_no": "TEST-WEL-04",
+            "policy_name": "청년 대중교통비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-04",
+            "score": 0.4499927454126095
+          },
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.4476970613316491
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.44689172264115096
+          },
+          {
+            "policy_no": "TEST-WEL-02",
+            "policy_name": "청년 건강검진 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-02",
+            "score": 0.4453052383893974
+          },
+          {
+            "policy_no": "TEST-HOU-02",
+            "policy_name": "청년 전세보증금 대출 이자 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-02",
+            "score": 0.42212413761690193
+          },
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.4158709344109528
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 133,
+            "policy_lookup": 2,
+            "generate": 4984,
+            "total": 5121
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.49318611536568646
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.47112833237577467
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.456462870278155
+            },
+            {
+              "chunk_id": "b02b2fd0-e79b-4934-aedf-4a054d2d0c04",
+              "policy_no": "TEST-WEL-04",
+              "chunk_type": "full",
+              "score": 0.4499927454126095
+            },
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.4476970613316491
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.44689172264115096
+            },
+            {
+              "chunk_id": "4ee1472a-9927-46fc-843f-f325d6f007ed",
+              "policy_no": "TEST-WEL-02",
+              "chunk_type": "full",
+              "score": 0.4453052383893974
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.43720674202584187
+            },
+            {
+              "chunk_id": "9f752a3a-597e-4725-9a0b-c9ba613850c2",
+              "policy_no": "TEST-HOU-02",
+              "chunk_type": "full",
+              "score": 0.42212413761690193
+            },
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.4158709344109528
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2830,
+            "completion": 262
+          }
+        }
+      }
+    },
+    {
+      "id": "N2",
+      "type": "정책 없음",
+      "question": "군 복무 중인 청년 지원 정책 있어?",
+      "expected": "없다고 답함 (특화 대상 코드에 군인은 있지만 해당 정책 없음)",
+      "profile": {},
+      "response": {
+        "answer": "제공된 공고에는 군 복무 중인 청년을 위한 별도 지원정책이 없어요. 일반 청년 정책의 군 복무 중 신청 가능 여부도 공고에 명시되어 있지 않으니, 가람시 청년정책과에 확인해 주세요.",
+        "policies": [
+          {
+            "policy_no": "TEST-HOU-04",
+            "policy_name": "청년 이사비 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-04",
+            "score": 0.5189144453468465
+          },
+          {
+            "policy_no": "TEST-FIN-03",
+            "policy_name": "청년 신용회복 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-FIN-03",
+            "score": 0.5139854555173717
+          },
+          {
+            "policy_no": "TEST-JOB-01",
+            "policy_name": "청년 구직활동 응원금",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-01",
+            "score": 0.511544826816032
+          },
+          {
+            "policy_no": "TEST-JOB-03",
+            "policy_name": "청년 직업훈련 수강비 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-JOB-03",
+            "score": 0.48538961826303706
+          },
+          {
+            "policy_no": "TEST-WEL-02",
+            "policy_name": "청년 건강검진 지원",
+            "application_start_date": "2026-07-01",
+            "application_end_date": "2026-12-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-02",
+            "score": 0.47627405517214205
+          },
+          {
+            "policy_no": "TEST-WEL-05",
+            "policy_name": "자립준비청년 정착 지원",
+            "application_start_date": null,
+            "application_end_date": null,
+            "application_url": "https://example.com/youthlink/policy/TEST-WEL-05",
+            "score": 0.4685476859010429
+          },
+          {
+            "policy_no": "TEST-HOU-01",
+            "policy_name": "청년 월세 지원",
+            "application_start_date": "2026-09-01",
+            "application_end_date": "2026-10-31",
+            "application_url": "https://example.com/youthlink/policy/TEST-HOU-01",
+            "score": 0.4598329181688757
+          },
+          {
+            "policy_no": "TEST-EDU-04",
+            "policy_name": "청년 어학 교육비 지원",
+            "application_start_date": "2026-08-01",
+            "application_end_date": "2026-09-15",
+            "application_url": "https://example.com/youthlink/policy/TEST-EDU-04",
+            "score": 0.45113063789401564
+          }
+        ],
+        "trace": {
+          "latency_ms": {
+            "retrieve": 145,
+            "policy_lookup": 4,
+            "generate": 9610,
+            "total": 9761
+          },
+          "retrieved_chunks": [
+            {
+              "chunk_id": "184ffa5c-bc72-4ae3-9ad8-68aa8c2455f3",
+              "policy_no": "TEST-HOU-04",
+              "chunk_type": "full",
+              "score": 0.5189144453468465
+            },
+            {
+              "chunk_id": "9dc6e16e-ab53-4cac-9f47-20c5f66b32a5",
+              "policy_no": "TEST-FIN-03",
+              "chunk_type": "full",
+              "score": 0.5139854555173717
+            },
+            {
+              "chunk_id": "2344f343-cb75-46c8-a62d-176897af5c89",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.511544826816032
+            },
+            {
+              "chunk_id": "349054f3-64a0-4a48-91db-54e03f5e19de",
+              "policy_no": "TEST-JOB-01",
+              "chunk_type": "part",
+              "score": 0.5076736350435049
+            },
+            {
+              "chunk_id": "c6ed8dc5-d262-4843-8c46-b7d48514802d",
+              "policy_no": "TEST-JOB-03",
+              "chunk_type": "full",
+              "score": 0.48538961826303706
+            },
+            {
+              "chunk_id": "4ee1472a-9927-46fc-843f-f325d6f007ed",
+              "policy_no": "TEST-WEL-02",
+              "chunk_type": "full",
+              "score": 0.47627405517214205
+            },
+            {
+              "chunk_id": "c62e6a53-e393-4688-a622-3e2abd87f098",
+              "policy_no": "TEST-WEL-05",
+              "chunk_type": "full",
+              "score": 0.4685476859010429
+            },
+            {
+              "chunk_id": "ca7d070f-c80e-47e8-9a2d-8dd082308572",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.4598329181688757
+            },
+            {
+              "chunk_id": "e26b13e9-bfdc-4de7-9427-fef44db2c5db",
+              "policy_no": "TEST-HOU-01",
+              "chunk_type": "part",
+              "score": 0.45212262070695686
+            },
+            {
+              "chunk_id": "172a0c97-8efa-45df-91f3-fb99f654e50a",
+              "policy_no": "TEST-EDU-04",
+              "chunk_type": "full",
+              "score": 0.45113063789401564
+            }
+          ],
+          "retriever": "vector",
+          "top_k": 10,
+          "prompt_version": "generate_v1",
+          "embedding_model": "text-embedding-3-small",
+          "chat_model": "gpt-6-luna",
+          "tokens": {
+            "prompt": 2834,
+            "completion": 748
+          }
+        }
+      }
+    }
+  ]
+}
