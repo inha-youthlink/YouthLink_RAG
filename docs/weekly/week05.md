@@ -202,7 +202,8 @@ ETL 청킹이 끝나기 전까지 로컬 DB에 가짜 데이터를 넣어 검색
 - [x] 검색: 벡터 top-k, 정책 단위 묶기, 정책 정보 조회
 - [x] 답변 생성: `generate_v1` 프롬프트, 신청 기간 상태·프로필 이름 변환
 - [x] 파이프라인 API: `POST /internal/pipeline`, trace 기록
-- [ ] 테스트 질문 결과 기록, 실제 ETL 데이터로 재확인
+- [x] 테스트 질문 결과 기록 (가짜 데이터): [기본 RAG 동작 확인](results/week05_testdata_result.md)
+- [ ] 실제 ETL 데이터로 재확인
 - [x] README 마무리
 
 ## 11. 6주차 미리보기
