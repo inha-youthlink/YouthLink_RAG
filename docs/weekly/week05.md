@@ -93,17 +93,27 @@ RAG 평가 서버와의 계약이다. 이후에는 기본값 있는 선택 필�
     }
   ],
   "trace": {
+    "latency_ms": { "retrieve": 830, "policy_lookup": 2, "generate": 3691, "total": 4525 },
     "retrieved_chunks": [{ "chunk_id": "...", "policy_no": "...", "chunk_type": "...", "score": 0.82 }],
+    "retriever": "vector",
+    "top_k": 10,
     "prompt_version": "generate_v1",
     "embedding_model": "text-embedding-3-small",
     "chat_model": "gpt-6-luna",
-    "latency_ms": { "...": 0 },
     "tokens": { "prompt": 1820, "completion": 310 }
   }
 }
 ```
 - 신청 기간이 없는 정책(상시 모집 등)은 날짜가 `null`
-- `latency_ms` 세부 항목은 파이프라인 API 이슈에서 확정
+- `latency_ms.retrieve`는 질문 임베딩 + 벡터 검색, `total`은 요청 전체 시간
+- `retrieved_chunks`에는 청크 본문을 넣지 않음
+
+### 에러 응답
+| 상황 | 상태 코드 | 본문 |
+|---|---|---|
+| 요청 검증 실패 (빈 질문, 음수 나이 등) | 422 | 틀린 필드와 이유 (FastAPI 기본 형식) |
+| OpenAI 호출 실패 | 503 | `{"detail": "LLM 서비스 호출에 실패했습니다."}` |
+| DB 호출 실패 | 503 | `{"detail": "데이터베이스 호출에 실패했습니다."}` |
 
 ---
 
@@ -127,6 +137,9 @@ RAG 평가 서버와의 계약이다. 이후에는 기본값 있는 선택 필�
 | 프로필 필터링 | 이번 주 제외. 방향은 "확실히 불충족인 정책만 제외" | 잘못된 제외가 가장 큰 위험 ([design.md](../design.md) 10-2) |
 | 오늘 날짜 | 한국 시간(`Asia/Seoul`) 기준 | 서버가 UTC면 자정~오전 9시에 날짜가 하루 전으로 계산됨 |
 | 프롬프트 관리 | 프롬프트는 `prompts/`의 버전 파일로 관리, 수정 시 `generate_v2.md`처럼 새 파일 추가 | trace의 `prompt_version`으로 버전별 결과 비교 |
+| trace 시간 단위 | `retrieve`(임베딩+검색), `policy_lookup`, `generate`, `total` | 임베딩이 검색기 안에서 실행됨. 전체 시간은 runner에서 측정해 이후 추가될 단계까지 포함 |
+| 에러 응답 | 외부 서비스 실패는 503 + 원인 구분 메시지, 상세는 서버 로그 | 평가 서버의 재시도 판단, 에러 메시지의 API 키 노출 방지 |
+| `/internal/*` 접근 제한 | 이번 주 제외, 배포 시 API 키 헤더 확인 추가 | 로컬에서만 실행 |
 | 테스트 | pytest 보류 | 기능 완성 우선, RAG·LLM 성능 평가는 평가 서버 담당 |
 | 문서 관리 | `design.md`(항상 최신) + 주차 문서(주 끝에 결과를 정리하고 이후 수정하지 않음) | 결정 과정과 실험 기록을 남김 |
 
@@ -188,9 +201,9 @@ ETL 청킹이 끝나기 전까지 로컬 DB에 가짜 데이터를 넣어 검색
 - [x] 로컬 확인 환경: ETL 스키마 + 가짜 정책 적재
 - [x] 검색: 벡터 top-k, 정책 단위 묶기, 정책 정보 조회
 - [x] 답변 생성: `generate_v1` 프롬프트, 신청 기간 상태·프로필 이름 변환
-- [ ] 파이프라인 API: `POST /internal/pipeline`, trace 기록
+- [x] 파이프라인 API: `POST /internal/pipeline`, trace 기록
 - [ ] 테스트 질문 결과 기록, 실제 ETL 데이터로 재확인
-- [ ] README 마무리
+- [x] README 마무리
 
 ## 11. 6주차 미리보기
 
