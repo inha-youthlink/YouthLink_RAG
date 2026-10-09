@@ -12,6 +12,7 @@ PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
 ALWAYS_OPEN_CODE = "0057002"
 NO_RESTRICTION_NAME = "제한없음"
 MISSING = "정보 없음"
+NO_EVIDENCE = "검색된 정책 없음"
 
 PROFILE_CODE_LABELS = {
     "marriage_status_code": "혼인 상태",
@@ -34,6 +35,8 @@ class ApplicationStatus(StrEnum):
 class GenerationResult:
     answer: str
     prompt_version: str
+    # 평가 서버가 근거 템플릿을 복제하지 않도록 LLM에 넘긴 정책별 근거 블록을 그대로 전달함
+    contexts: list[str]
     prompt_tokens: int
     completion_tokens: int
 
@@ -41,10 +44,12 @@ class GenerationResult:
 async def generate(ctx: PipelineContext, prompt_name: str = "generate_v1") -> GenerationResult:
     system_prompt = (PROMPTS_DIR / f"{prompt_name}.md").read_text(encoding="utf-8")
     profile_text = await _format_profile(ctx)
+    contexts = _format_evidence(ctx.groups, ctx.policies, ctx.today)
+    evidence = "\n\n".join(contexts) if contexts else NO_EVIDENCE
     user_message = "\n\n".join([
         f"[오늘 날짜]\n{ctx.today.isoformat()}",
         f"[사용자 프로필]\n{profile_text}",
-        f"[근거]\n{_format_evidence(ctx.groups, ctx.policies, ctx.today)}",
+        f"[근거]\n{evidence}",
         f"[질문]\n{ctx.query}",
     ])
 
@@ -55,6 +60,7 @@ async def generate(ctx: PipelineContext, prompt_name: str = "generate_v1") -> Ge
     return GenerationResult(
         answer=result.text,
         prompt_version=prompt_name,
+        contexts=contexts,
         prompt_tokens=result.prompt_tokens,
         completion_tokens=result.completion_tokens,
     )
@@ -95,7 +101,7 @@ async def _format_profile(ctx: PipelineContext) -> str:
     return "\n".join(lines) if lines else MISSING
 
 
-def _format_evidence(groups: list[PolicyGroup], policies: dict[str, PolicyRecord], today: date) -> str:
+def _format_evidence(groups: list[PolicyGroup], policies: dict[str, PolicyRecord], today: date) -> list[str]:
     blocks = []
     for group in groups:
         policy = policies.get(group.policy_no)
@@ -112,7 +118,7 @@ def _format_evidence(groups: list[PolicyGroup], policies: dict[str, PolicyRecord
             "[내용]",
             *(chunk.content for chunk in group.chunks),
         ]))
-    return "\n\n".join(blocks) if blocks else "검색된 정책 없음"
+    return blocks
 
 
 def _format_status(policy: PolicyRecord, today: date) -> str:

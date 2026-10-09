@@ -70,9 +70,21 @@ uv run uvicorn app.main:app --reload
 ```
 
 - `profile`은 생략할 수 있고, 각 항목도 모두 선택입니다.
-- 응답은 `answer`(답변), `policies`(관련도순 추천 정책), `trace`(검색 결과, 모델, 단계별 시간, 토큰)로 구성됩니다.
+- 응답은 `answer`(답변), `policies`(관련도순 추천 정책), `trace`(실행 정보)로 구성됩니다.
 - 요청 검증 실패는 422, OpenAI·DB 호출 실패는 503을 반환합니다.
-- 자세한 형식은 `/docs`와 [5주차 작업 기록](docs/weekly/week05.md)을 참고하세요.
+- 자세한 형식은 `/docs`와 [5주차 작업 기록](docs/weekly/week05.md)을 참고하세요. `trace` 구성은 아래 debug 모드 기준입니다.
+
+#### debug 모드 (`?debug=true`)
+
+RAG 평가·디버깅용입니다. 근거 원문 같은 내부 정보는 debug 요청에만 포함합니다.
+
+| 요청 | `trace`에 포함되는 키 |
+|---|---|
+| `POST /internal/pipeline` (기본) | `latency_ms`, `tokens`, `chat_model`, `retriever`, `top_k`, `prompt_version`, `embedding_model` |
+| `POST /internal/pipeline?debug=true` | 위 키 + `contexts`, `retrieved_chunks` |
+
+- `contexts`: LLM에 넘긴 정책별 근거 블록 (`list[str]`). 정책 정보(신청 상태, 신청 방법 등)와 청크 본문이 함께 들어 있습니다. 검색된 정책이 없으면 `[]`
+- `retrieved_chunks`: 검색된 청크 목록 (`chunk_id`, `policy_no`, `chunk_type`, `score`, `content`), 검색 점수순
 
 ## 디렉터리 구조
 

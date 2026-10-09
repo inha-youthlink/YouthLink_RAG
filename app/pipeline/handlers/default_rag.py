@@ -44,9 +44,11 @@ async def handle(ctx: PipelineContext) -> PipelineOutput:
                 "policy_no": chunk.policy_no,
                 "chunk_type": chunk.chunk_type,
                 "score": chunk.score,
+                "content": chunk.content,
             }
             for chunk in chunks
         ],
+        "contexts": result.contexts,
         "retriever": deps.settings.retriever,
         "top_k": deps.settings.top_k,
         "prompt_version": result.prompt_version,
