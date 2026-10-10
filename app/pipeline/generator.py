@@ -10,6 +10,7 @@ from app.repositories.policy_repository import PolicyRecord
 PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
 
 ALWAYS_OPEN_CODE = "0057002"
+CLOSED_CODE = "0057003"
 NO_RESTRICTION_NAME = "제한없음"
 MISSING = "정보 없음"
 NO_EVIDENCE = "검색된 정책 없음"
@@ -66,10 +67,13 @@ async def generate(ctx: PipelineContext, prompt_name: str = "generate_v1") -> Ge
     )
 
 
-# API의 마감 코드는 갱신을 신뢰하기 어려워 상시 여부만 코드로 판단하고 나머지는 날짜로 판단함
+# 상시·마감 정책은 신청 날짜가 없어 코드로 판단함
+# 특정기간 코드는 기간이 끝나도 마감으로 갱신되지 않아 날짜로 판단함
 def application_status(policy: PolicyRecord, today: date) -> ApplicationStatus:
     if policy.application_period_type_code == ALWAYS_OPEN_CODE:
         return ApplicationStatus.ALWAYS_OPEN
+    if policy.application_period_type_code == CLOSED_CODE:
+        return ApplicationStatus.CLOSED
 
     start, end = policy.application_start_date, policy.application_end_date
     if start is None and end is None:
@@ -123,10 +127,12 @@ def _format_evidence(groups: list[PolicyGroup], policies: dict[str, PolicyRecord
 
 def _format_status(policy: PolicyRecord, today: date) -> str:
     status = application_status(policy, today)
-    if status in (ApplicationStatus.ALWAYS_OPEN, ApplicationStatus.UNKNOWN):
+    start, end = policy.application_start_date, policy.application_end_date
+    # 마감 코드 정책은 날짜가 없어 "미정 ~ 미정"이 붙지 않도록 상태만 표시함
+    if status == ApplicationStatus.ALWAYS_OPEN or (start is None and end is None):
         return status.value
-    start = policy.application_start_date.isoformat() if policy.application_start_date else "미정"
-    end = policy.application_end_date.isoformat() if policy.application_end_date else "미정"
+    start = start.isoformat() if start else "미정"
+    end = end.isoformat() if end else "미정"
     return f"{status.value} (신청 기간: {start} ~ {end})"
 
 
