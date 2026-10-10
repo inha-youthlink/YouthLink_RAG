@@ -1,6 +1,6 @@
 # YouthLink RAG 서버 설계 정리
 
-> RAG Technique 담당 기준. Phase 1(RAG 서버가 대화 저장) → Phase 2(Spring으로 이전)를 모두 반영.
+> RAG Technique 담당 기준. 채팅 저장·조회는 RAG 서버가 맡고, 프론트는 Spring(로그인·사용자)을 거쳐 연결된다.
 > 최종 수정: 2026-10-10 (6주차)
 
 ---
@@ -12,7 +12,7 @@
 | 구조 | **워크플로우형**. LLM은 해석을 맡고, 처리 방식 결정은 코드가 한다. 질문 이해는 **LLM 기반 쿼리 라우팅**(intent 분류 → 코드가 핸들러 선택)과 **질문 재작성**으로 구성 |
 | 구현 | **FastAPI로 직접 구현**. 부품 라이브러리는 적극 활용, LangChain은 로컬 실험용 |
 | DB | **PostgreSQL + pgvector**. 정책 데이터와 벡터 검색을 같은 DB에서 처리 (SQL JOIN으로 필터링 가능) |
-| 대화 저장 | **Phase 1**: RAG 서버가 저장 → **Phase 2**: Spring으로 이전 |
+| 대화 저장 | **RAG 서버**가 저장·조회. Spring은 로그인·사용자를 맡고 프론트 요청을 RAG에 전달 (6주차에 Spring 이전 계획을 바꿈, 15절) |
 | 핵심 원칙 | **파이프라인은 순수 함수**, 저장은 별도 계층. 저장 위치가 바뀌어도 파이프라인과 테스트는 유지 |
 | 품질의 핵심 | Advanced 기법 조합보다 **질문 이해와 처리 방식 결정** |
 | 구조 원칙 | 디렉터리 구조는 유지하고, 새 기능은 **파일과 폴더 추가**로 확장. 코드 수정은 허용 |
@@ -55,48 +55,50 @@
 
 ### 1-3. 테이블 소유권
 
-| 테이블 | Phase 1 | Phase 2 |
+| 테이블 | 쓰기 | 읽기 |
 |---|---|---|
-| `policy`, `policy_region`, `policy_eligibility_code`, `common_code`, `policy_chunk` | ETL 쓰기 / RAG 읽기 | 동일 |
-| `chat_room`, `chat_profile`, `chat_message`, `message_policy_ref` | **RAG 서버** 쓰기 (DDL·마이그레이션은 ETL 저장소) | **Spring** |
+| `policy`, `policy_region`, `policy_eligibility_code`, `common_code`, `policy_chunk`, `region`, `region_code_mapping` | ETL | RAG |
+| `chat_room`, `chat_profile`, `chat_message`, `message_policy_ref` | **RAG** | **RAG** |
 
 어느 시점이든 **한 테이블에 쓰는 서버는 하나**.
 
 **채팅 테이블 DDL** (6주차 결정): DDL과 마이그레이션은 ETL 저장소(`db/schema.sql`, `db/migrations/`)에서 관리하고, 변경은 RAG가 ETL 저장소에 이슈·PR로 진행한다. 데이터는 RAG가 쓴다.
-- Phase 2에서 Spring으로 넘어가므로 관리 주체 이전을 한 번으로 줄이고, 한 DB에 마이그레이션 방식을 하나만 유지한다
+- 스키마를 한곳(ETL 저장소)에서 보고, 한 DB에 마이그레이션 방식을 하나만 유지한다
 - "한 테이블에 쓰는 서버는 하나"는 데이터 쓰기 기준이라 그대로 지켜진다
 
 ---
 
 ## 2. 시스템 구성
 
-백엔드는 3개 서버로 운영한다.
+백엔드는 4개 서버로 운영한다.
 
 | 서버 | 역할 |
 |---|---|
 | **ETL 서버** | 온통청년 API 수집, 정책 테이블 적재, 청크·임베딩 생성 |
-| **RAG 서버** (이 저장소) | 질문 이해, 검색, 답변 생성. Phase 1에서는 채팅 저장도 담당 |
+| **Spring 서버** | 로그인, 사용자 관리. 프론트 요청을 받아 RAG 서버에 전달 |
+| **RAG 서버** (이 저장소) | 질문 이해, 검색, 답변 생성, 채팅 저장·조회 |
 | **RAG 평가 서버** | `/internal/pipeline`을 호출해 RAG·LLM 성능 평가 |
 
-### Phase 1 (지금)
+### Spring 연동 전 (지금)
 ```
-[ETL 서버] ── 정책·청크 적재 ──→ [PostgreSQL + pgvector] ←── 읽기 ── [RAG 서버]
+[ETL 서버] ── 정책·청크 적재 ──→ [PostgreSQL + pgvector] ←── 읽기·쓰기 ── [RAG 서버]
 
 [클라이언트] ── /api/rooms/... ──→ [RAG 서버]
                                      ├ 저장 계층 (chat_* 테이블)
                                      └ 파이프라인 (순수 함수)
 [RAG 평가 서버] ── /internal/pipeline ──→ [RAG 서버 파이프라인]
 ```
-- 클라이언트: 프론트 없이 백엔드부터 구성하므로 Swagger, 테스트 스크립트, 이후 붙는 프론트
+- 클라이언트: 프론트 없이 백엔드부터 구성하므로 Swagger, 테스트 스크립트
 
-### Phase 2 (Spring 추가 후)
+### Spring 연동 후
 ```
-[프론트] ──── /api/rooms/... ────→ [Spring] (세션, 채팅방, 메시지 저장)
-                                      └── /internal/pipeline ──→ [RAG 서버]
-[RAG 평가 서버] ── /internal/pipeline ────────────────────────→ [RAG 서버]
+[프론트] ── [Spring] (로그인, 사용자)
+               └── /api/rooms/... (사용자 식별값 전달) ──→ [RAG 서버] (채팅 저장·조회, 파이프라인)
+[RAG 평가 서버] ── /internal/pipeline ──────────────────→ [RAG 서버]
 ```
 
-`/internal/pipeline`은 끝까지 유지되고, 앞단의 저장 담당만 바뀐다.
+- 프론트는 RAG 서버를 직접 부르지 않는다. RAG 서버의 API는 Spring과 평가 서버만 호출한다
+- 채팅 데이터는 RAG 서버에 남는다. 대화 상태(현재 정책, 보여준 정책 순서, 질문 분석 결과)가 RAG의 질문 분석 규칙에 맞춰진 정보라, RAG가 직접 저장·조회하는 것이 자연스럽다
 
 ---
 
@@ -113,7 +115,7 @@ YouthLink_RAG/
 │  ├─ api/
 │  │  ├─ internal.py             # POST /internal/pipeline (저장 없음, 계속 유지)
 │  │  ├─ health.py               # GET /health
-│  │  └─ rooms.py                [+ 6주차] 채팅방/메시지 API (Phase 2에서 제거)
+│  │  └─ rooms.py                [+ 6주차] 채팅방/메시지 API (Spring이 호출)
 │  ├─ schemas/
 │  │  ├─ pipeline.py             # Profile, PipelineInput/Output, Chunk, PolicyItem
 │  │  ├─ analysis.py             [+ 7주차] LLM 구조화 출력
@@ -146,12 +148,12 @@ YouthLink_RAG/
 │  │  ├─ grouping.py             # 청크 → 정책 단위 묶기
 │  │  └─ generator.py            # 프롬프트 조립 + 답변 생성
 │  ├─ services/                  [+ 6주차]
-│  │  └─ chat_service.py         # 상태 조회 → 파이프라인 → 저장 (Phase 2에서 제거)
+│  │  └─ chat_service.py         # 상태 조회 → 파이프라인 → 저장
 │  ├─ repositories/
 │  │  ├─ vector_repository.py    # policy_chunk 벡터 검색 (읽기)
 │  │  ├─ policy_repository.py    # policy 조회 (읽기)
 │  │  ├─ common_code_repository.py  # common_code 코드 → 이름 조회 (읽기)
-│  │  └─ chat_repository.py      [+ 6주차] chat_* 테이블 (Phase 2에서 제거)
+│  │  └─ chat_repository.py      [+ 6주차] chat_* 테이블 (읽기·쓰기)
 │  └─ prompts/
 │     ├─ generate_v1.md
 │     └─ analyze_v1.md           [+ 7주차]
@@ -223,12 +225,11 @@ YouthLink_RAG/
 ```
 POST /internal/pipeline   PipelineInput → PipelineOutput (저장 없음)
 ```
-- 지금: 직접 테스트, RAG 평가 서버
-- Phase 2: Spring이 호출
+- 호출: 직접 테스트, RAG 평가 서버. Spring은 채팅 API(4-2)를 호출하고 이 경로는 쓰지 않음
 - 응답 형식은 필드 추가만 자유롭게
 - `?debug=true` (6주차): trace에 `contexts`(LLM에 넘긴 정책별 근거 블록)와 `retrieved_chunks`(청크 본문 포함)를 추가. 기본 요청은 API 계층의 허용 목록으로 가벼운 키만 반환 (`latency_ms`, `tokens`, `chat_model`, `retriever`, `top_k`, `prompt_version`, `embedding_model`). RAG 평가 서버는 항상 debug로 호출
 
-### 4-2. 외부용 (Phase 1에만 RAG 서버에 존재)
+### 4-2. 채팅 API (Spring이 호출, 외부 비공개)
 ```
 POST /api/rooms                     채팅방 생성 (session_id, profile) → room_id
 GET  /api/rooms?session_id=...      세션의 채팅방 목록
@@ -244,7 +245,9 @@ POST /api/rooms/{room_id}/messages  질문 전송 (session_id, question, action)
   "shown_policy_ids": ["..."]
 }
 ```
-이 경로와 형식을 Phase 2에서 Spring이 그대로 이어받으면 프론트는 서버 주소만 바꾸면 된다.
+- Spring 연동 전에는 Swagger와 테스트 스크립트로 직접 호출하고, 연동 후에는 Spring이 호출한다
+- 프론트에 보여줄 API 형식은 Spring이 정한다. RAG 채팅 API 형식과 같을 필요는 없다
+- 질문 전송 응답 형식은 채팅 저장 구현 전에 확정한다 (6주차)
 
 ---
 
@@ -267,9 +270,9 @@ message_policy_ref  message_id(PK,FK), policy_no(PK,FK), relevance_score
 
 ### 5-3. 운영 원칙
 - 채팅방 ID는 UUID, 요청마다 세션-채팅방 소유 관계 확인
-- 세션 ID는 Phase 1에서 호출 측이 생성, Phase 2에서 Spring이 발급
-  - 프론트 없이 백엔드부터 구성하므로 Phase 1의 호출 측은 Swagger, 테스트 스크립트, 이후 붙는 프론트
-  - 세션 ID는 UUID 등 임의 문자열. 요청의 세션 ID와 채팅방의 세션 ID가 다르면 404 (인증·토큰은 두지 않음)
+- 채팅방 소유자 식별값: Spring 연동 전에는 호출 측(Swagger, 테스트 스크립트)이 임의 문자열을 만들고, 연동 후에는 Spring이 로그인한 사용자의 식별값을 넘긴다
+  - RAG 서버는 로그인·인증을 하지 않고, Spring이 넘긴 값과 채팅방의 값만 비교한다. 다르면 404
+  - 컬럼 이름(`session_id`, `user_id` 등)은 채팅 저장 구현 전에 정한다 (6주차)
   - `chat_room.session_id`는 처음부터 `NOT NULL` + 인덱스 (나중에 추가하면 기존 채팅방 보정과 API 명세 변경 필요)
 - 개인정보 보관 기간 정의 (세션 만료 후 삭제 등)
 
@@ -594,36 +597,42 @@ LLM이 질문을 분석해 intent를 분류하고(**LLM 기반 쿼리 라우팅*
 - **응답 속도**: 병렬 호출, 효과 있는 기법만 유지
 - **비용**: 요청당 LLM 호출 수와 토큰 추적
 - **최신성**: 공고 수정과 마감 반영
-- **보안**: `/internal/*` 비공개, 세션-채팅방 소유 확인
+- **보안**: `/internal/*`와 채팅 API는 외부 비공개 (Spring, 평가 서버만 호출), 채팅방 소유 확인
 - **개인정보**: 대화 보관 기간, 로컬 LLM 전환 검토 (`llm/client.py`만 교체)
 
 ---
 
-## 15. Spring 이전 계획 (Phase 1 → Phase 2)
+## 15. Spring 연동 계획
 
-### 15-1. 지금부터 지킬 준비
-1. 파이프라인은 DB에 쓰지 않는다
-2. 채팅 저장 코드는 `api/rooms.py`, `services/`, `models/`, `chat_repository.py`에만
-3. 채팅 테이블은 JPA 매핑하기 쉬운 형태 유지
-4. 외부 API 명세 문서화 → Spring이 그대로 구현
-5. `metadata` JSON 구조 문서화 → Spring은 해석 없이 저장/전달
+### 15-1. 역할 분담 (6주차 결정)
 
-### 15-2. 이전 절차
+| 서버 | 맡는 것 | 맡지 않는 것 |
+|---|---|---|
+| Spring | 로그인, 사용자 관리, 프론트 요청 중계, 사용자 식별값 전달 | 채팅 저장·조회, 대화 상태 |
+| RAG | 채팅 저장·조회, 대화 상태, 질문 이해·검색·답변 생성 | 로그인, 인증 |
+
+**원래 계획에서 바꾼 이유**: 원래는 Spring 추가 후 채팅 저장을 Spring으로 옮길 계획이었다(Phase 2). 그러나 대화 상태(현재 정책, 보여준 정책 순서, 질문 분석 결과)는 RAG의 질문 분석 규칙을 위한 정보다. Spring이 저장하면 매 질문마다 Spring이 RAG 전용 상태를 조회해 넘기고 다시 받아 저장해야 하며, RAG가 상태 항목을 바꿀 때마다 Spring 코드와 API 계약도 함께 바뀐다. 그래서 채팅 저장·조회는 RAG에 두고, Spring은 사용자와 로그인만 맡는다. 채팅 테이블 이전 작업도 없어진다.
+
+### 15-2. 지켜야 할 것
+1. 파이프라인은 DB에 쓰지 않는다 (테스트와 평가를 위해 유지)
+2. 채팅 저장 코드는 `api/rooms.py`, `services/`, `chat_repository.py`에만 둔다
+3. 채팅 API 명세를 문서화한다 → Spring이 이 명세로 호출
+4. RAG 서버는 인증하지 않는다. 소유자 식별값은 Spring이 넘긴다
+
+### 15-3. 연동 절차
 
 | 단계 | 작업 |
 |---|---|
-| 1 | Spring이 기존 `chat_*` 테이블을 JPA 엔티티로 매핑 (같은 DB, 소유권만 이전) |
-| 2 | Spring이 `/api/rooms/...`를 같은 명세로 구현, 내부에서 `/internal/pipeline` 호출 |
-| 3 | 세션 ID 발급을 Spring으로 |
-| 4 | 스테이징에서 동일 질문으로 Phase 1과 결과 비교 |
-| 5 | 프론트 API 주소를 **한 번에 전환** (이중 쓰기 기간 없음) |
-| 6 | RAG 서버에서 `rooms.py`, `services/`, `models/`, `chat_repository.py` 제거, 마이그레이션 관리도 Spring(Flyway 등)으로 |
+| 1 | Spring이 로그인·사용자 기능 구현 |
+| 2 | Spring이 RAG 채팅 API를 호출하도록 연결 (사용자 식별값 전달) |
+| 3 | RAG 서버의 API를 외부에서 막음 (내부 네트워크 또는 API 키) |
+| 4 | 프론트를 Spring에 연결 |
 
-### 15-3. 주의점
-- 이중 쓰기 금지
+### 15-4. 주의점
 - SSE 사용 시 Spring 중계 방식 확인
-- Spring → RAG 타임아웃 넉넉히
-- `/internal/pipeline` 호출 주체 제한
+- Spring → RAG 타임아웃 넉넉히 (답변 생성에 수 초)
+- RAG API 호출 주체 제한 (Spring, 평가 서버)
+- 회원 탈퇴 시 대화 삭제: Spring이 RAG에 삭제를 요청하는 API가 필요할 수 있음
 
 ---
 
@@ -635,7 +644,7 @@ LLM이 질문을 분석해 intent를 분류하고(**LLM 기반 쿼리 라우팅*
 | **6주차** | debug 모드(평가 서버 연동), 마감 코드 판정 수정, 채팅 저장 계층 (`/api/rooms`, ERD 변경). [weekly/week06.md](weekly/week06.md) 참고 |
 | **7주차** | 질문 분석(상태 관련 신호 포함), 신청 상태 우선순위 규칙 확정, 1차 필터링(첫 조건은 신청 상태), 핸들러 확장(유형별 답변 명세 먼저), 현재 정책 상태 |
 | **8주차** | 자격 확인 핸들러(조건별 코드 판정, 1차 필터링과 판정 로직 공유), 비교 핸들러, 관련성 판정, 실제 데이터로 RAG 평가 |
-| **9~10주차** | UI 연동, Spring 추가 시 이전 절차 진행 |
+| **9~10주차** | UI 연동, Spring 연동 (15-3) |
 | **11주차** | 중간시연: 질문 이해 + 기본 분기 + 근거 기반 답변 |
 | **12~13주차** | Advanced 기법 비교 실험, 오류 분석 기반 개선 |
 | **14주차~** | 안정화, 최종 시연 준비 |
